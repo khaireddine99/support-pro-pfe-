@@ -1,0 +1,22 @@
+
+
+<h1>{{ticket.title}}</h1>
+<p>{{ticket.body}}</p>
+
+<h4 style="color: rebeccapurple;">comments</h4>
+<ul>
+    {% for comment in comments %}
+        <h4>{{comment.owner}}</h4>
+        <li>{{comment.body}}</li>
+        <a href="{% url 'edit_comment' comment.id %}">edit</a>
+    {% endfor %}
+</ul>
+
+
+{% if user.is_authenticated %}
+    <form action="{% url 'ticket' ticket.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">add comment</button>
+    </form>
+{% endif %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+<h1>chatbot</h1>
+
+
+
+
+<!--chat history-->
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="chat">
+                    
+                <div class="chat-history">
+                    <ul class="m-b-0">
+                        {% for line in chat %}
+                        <li class="clearfix">
+                            <div class="message my-message">{{line.0}}</div>
+                        </li>
+                        <li class="clearfix">
+                            <div class="message other-message float-right">{{line.1}}</div>
+                        </li>
+                        {% endfor %}
+
+                        
+                    </ul>
+                </div>
+                <div class="chat-message clearfix">
+                    <div class="input-group mb-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-send"></i></span>
+                        </div>
+                        
+                        <form action="" method="post" style="width: 100%;" style="display: hidden;">
+                            {% csrf_token %}
+                            <input type="text" class="form-control" placeholder="Enter text here..." name="user" method="post">
+
+                        </form>
+                        
+                        
+                                                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+{% for ticket in tickets %}
+    <div class="card mb-3">
+        <div class="card-header">
+            <a href="{% url 'ticket' ticket.id %}"><h4>{{ticket.title}}</h4></a>
+        </div>
+    </div>
+{% endfor %}
+{% endblock content %}
